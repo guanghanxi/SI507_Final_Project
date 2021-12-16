@@ -217,7 +217,7 @@ def save_gradientmap(dictlist):
             locationmode = 'USA-states', colorscale = 'YlGnBu', colorbar_title = "Number of Best Buy Stores")) 
     fig_bestbuy.update_layout( title_text = 'Number of Best Buy Stores in USA States', geo_scope='usa')
     fig_bestbuy.write_image(file = 'picture/bestbuy.png', format='png')
-    fig_apple = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Pop_Apple'].astype(int), 
+    fig_apple = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Apple_Num'].astype(int), 
             locationmode = 'USA-states', colorscale = 'Greys', colorbar_title = "Number of Apple Stores")) 
     fig_apple.update_layout( title_text = 'Number of Apple Stores in USA States', geo_scope='usa')
     fig_apple.write_image(file = 'picture/apple.png', format='png')
@@ -226,7 +226,7 @@ def save_gradientmap(dictlist):
     fig_density_bestbuy.update_layout( title_text = 'Rate Between Population and Number of Best Buy Stores in USA States', geo_scope='usa')
     fig_density_bestbuy.write_image(file = 'picture/density_bestbuy.png', format='png')
     fig_density_bestbuy = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Pop_Apple'].astype(int), 
-            locationmode = 'USA-states', colorscale = 'YlGnBu', colorbar_title = "Population / Num of Apple")) 
+            locationmode = 'USA-states', colorscale = 'Greys', colorbar_title = "Population / Num of Apple")) 
     fig_density_bestbuy.update_layout( title_text = 'Rate Between Population and Number of Apple Stores in USA States', geo_scope='usa')
     fig_density_bestbuy.write_image(file = 'picture/density_apple.png', format='png')
     return state_df

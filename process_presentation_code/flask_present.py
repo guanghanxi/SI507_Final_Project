@@ -60,7 +60,7 @@ def distribution_data(num):
             locationmode = 'USA-states', colorscale = 'YlGnBu', colorbar_title = "Number of Best Buy Stores")) 
         fig.update_layout( title_text = 'Number of Best Buy Stores in USA States', geo_scope='usa')
     elif num == '2':
-        fig = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Pop_Apple'].astype(int), 
+        fig = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Apple_Num'].astype(int), 
             locationmode = 'USA-states', colorscale = 'Greys', colorbar_title = "Number of Apple Stores")) 
         fig.update_layout( title_text = 'Number of Apple Stores in USA States', geo_scope='usa')
     elif num == '3':
@@ -69,7 +69,7 @@ def distribution_data(num):
         fig.update_layout( title_text = 'Rate Between Population and Number of Best Buy Stores in USA States', geo_scope='usa')
     else:
         fig = go.Figure(data=go.Choropleth(locations=state_df['ABR'], z = state_df['Pop_Apple'].astype(int), 
-            locationmode = 'USA-states', colorscale = 'YlGnBu', colorbar_title = "Population / Num of Apple")) 
+            locationmode = 'USA-states', colorscale = 'Greys', colorbar_title = "Population / Num of Apple")) 
         fig.update_layout( title_text = 'Rate Between Population and Number of Apple Stores in USA States', geo_scope='usa')
     graphJSON = fig.to_json()
     return graphJSON
@@ -140,6 +140,10 @@ def show_distribution():
     'How Much Population Does One Best Buy Store Serve in the Different States Respectively?', 
     'How Much Population Does One Apple Store Serve in the Different States Respectively?']
     content = [titile_list[int(k)-1]]
+    if k=='1' or k =='2':
+        content.append('Most stores are in the California and Texas')
+    else:
+        content.append('States without stores will be considered as with a half store in this map.')
     return render_template('map.html', plot = distribution_data(k), context = content)
 
 if __name__ == "__main__":
