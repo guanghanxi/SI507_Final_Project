@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF8"/>
+    <title>States Data Visualiztion</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+<body>
+    <h1>{{context[0]}}</h1>
+    <div id = 'map'>
+    </div>
+    <a href='/distribution'>Choose Another Type of Data Visualiztion on Map</a>
+</body>
+<script type="text/javascript">
+    var graphs = '{{ plot|safe }}';
+    var obj = JSON.parse(graphs);
+    Plotly.plot('map',obj);
+</script>
+</html>

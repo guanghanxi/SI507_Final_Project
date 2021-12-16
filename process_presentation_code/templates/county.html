@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>County</title>
+</head>
+
+<body>
+  <main>
+    <form action="/store" method="POST">
+        <p>
+            Which county you want to check?
+            </br>
+            <select name="county">
+                {% for county in countylist %}
+                <option value="{{county['fips']}}">{{county['NAME']}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Submit Form"/>
+  </form>
+  </main>
+</body>
+
+</html>

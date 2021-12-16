@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>State</title>
+</head>
+
+<body>
+  <main>
+    <form action="county" method="POST">
+        <p>
+            In which state is the county you want to check?
+            </br>
+            <select name="states">
+                {% for state in state_list %}
+                <option value="{{state['state']}}">{{state['NAME']}}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Submit Form"/>
+  </form>
+  <a href='/'>Back to Choose Another Presentation</a>
+  </main>
+</body>
+
+</html>

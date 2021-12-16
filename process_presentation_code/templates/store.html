@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>Store List</title>
+</head>
+
+<body>
+    <header>
+        <h1>Best Buy Stores and Apple Stores in {{county}}</h1>
+    </header>
+    <main>
+        <h2>Best Buy Store</h2>
+        <ol>
+            {% for bestbuy in bestbuylist %}
+            <li>{{bestbuy['address'] + ', ' + bestbuy['city'] + ', ' + bestbuy['state'] + ' ' + bestbuy['post_code']}}</li>
+            {% endfor %}
+        </ol>
+        <h2>Apple Store</h2>
+        <ol>
+            {% for apple in applelist %}
+            <li>{{apple['address'] + ', ' + apple['city'] + ', ' + apple['state'] + ' ' + apple['post_code']}}</li>
+            {% endfor %}
+        </ol>
+        <a href='/state'>Back to Choose Another County</a>
+    </main>
+</body>
+
+</html>

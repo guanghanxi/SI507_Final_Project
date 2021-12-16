@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF8"/>
+    <title>County Distribution</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>The US County Distribution</h1>
+    </header>
+    <main>
+        <div id = 'piegraph' style = 'width: 60%'>
+        </div>
+        <p>Most Counties in the US have neither Best Buy and Apple Stores</p>
+        <p>There are far more Counties with Best Buy Stores than Counties with Apple Stores</p>
+        <p>Almost all Counties with Apple Stores have Best Buy stores </p>
+        <a href='/'>Back to Choose Another Presentation</a>
+    </main>
+</body>
+<script type="text/javascript">
+    var graphs = '{{ pie|safe }}';
+    var obj = JSON.parse(graphs);
+    Plotly.plot('piegraph',obj);
+</script>
+</html>
