@@ -4,6 +4,7 @@ import json
 import re
 import numpy as np
 import pandas as pd
+import secrets
 
 BESTBUY_URL = 'https://stores.bestbuy.com/'
 APPLE_URL = 'https://www.apple.com'
@@ -71,7 +72,7 @@ STATE_DICT = {
     "WY": "Wyoming"
 }
 
-ZIP_API = 'https://www.zipcodeapi.com/rest/DemoOnly000rEHtaqLsbe1YgtXEDp9eTTizuRd2XohTa0uOmTJOZO2KJvrsXy0ZO/info.json/{code}/degrees'
+ZIP_API = 'https://www.zipcodeapi.com/rest/{api_key}/info.json/{code}/degrees'
 
 #  functions to get apple store information
 
@@ -166,7 +167,7 @@ def add_information(store_list):
             element['county_fips'] = str(zip_code[zip_code['zip']== postcode]['county_fips'].iloc[0]).zfill(5)
         else:
             element['county_fips'] = str(cities[cities['city'] == element['city']]['county_fips'].iloc[0]).zfill(5)
-            zip_data = requests.get(ZIP_API.format(code = postcode)).json()
+            zip_data = requests.get(ZIP_API.format( api_key = secrets.zip_api_key ,code = postcode)).json()
             element['coordinate'] = (zip_data['lat'], zip_data['lng'])
     return store_list
 
